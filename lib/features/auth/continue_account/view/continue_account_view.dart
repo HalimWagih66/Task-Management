@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:task_management/features/auth/continue_account/view/widgets/button_continue_account.dart';
 import 'package:task_management/features/auth/continue_account/view/widgets/custom_line.dart';
-
 import '../../../../core/base/base_state.dart';
 import '../../../../core/style/colors/application_color.dart';
-import '../../continue_account_with_email_view/view/continue_account_wth_email_view.dart';
+import '../../continue_account_with_email_view/view/continue_with_email_view.dart';
 import '../navigator/continue_account_navigator.dart';
 import '../view model/continue_account_view_model.dart';
 class ContinueAccountView extends StatefulWidget {
