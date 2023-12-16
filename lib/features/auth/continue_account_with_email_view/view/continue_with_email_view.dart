@@ -23,6 +23,7 @@ class ContinueAccountWithEmailView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             Image.asset("assets/images/auth/continue_account_with_email/continue_account_email_image.png"),
             Text("Task Management",style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 10),
