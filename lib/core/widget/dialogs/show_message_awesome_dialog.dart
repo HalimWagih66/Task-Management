@@ -24,12 +24,12 @@ void showMessageWithAwesomeDialog({
       descTextStyle: Theme.of(context).textTheme.displayMedium,
       btnCancelOnPress: nigActionName != null
           ? () {
-        nigAction?.call();
+        nigAction!();
       }
           : null,
       btnOkOnPress: posActionName != null
           ? () {
-        posAction?.call();
+        posAction!();
       }
           : null,
       btnOkText: posActionName,
