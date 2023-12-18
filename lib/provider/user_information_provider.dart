@@ -1,15 +1,40 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:task_management/core/const/constant.dart';
+import 'package:task_management/features/auth/Dao/users_dao.dart';
 import '../core/model/user_info_model.dart';
 
 class UserInformationProvider extends ChangeNotifier{
-   late UserInformationModel _informationUserModel;
-   late UserCredential userCredential;
-  UserInformationModel get informationUserModel => _informationUserModel;
-
-  set informationUserModel(UserInformationModel value) {
-    _informationUserModel = value;
+  PageController pageController = PageController();
+  UserInformationProvider(){
+    userInformationModel = UserInformationModel();
+    initializeUserInformation();
   }
+  void initializeUserInformation()async{
+    bool result = await InternetConnectionChecker().hasConnection;
+    if(result){
+      userInformationModel = (await UsersDao.getUser(FirebaseAuth.instance.currentUser!.uid)!)!;
+      notifyListeners();
+    }else{
+      var userBox = Hive.box<UserInformationModel>(kUserInformationBox);
+      userInformationModel = userBox.get("userInformationModel")!;
+    }
+    print("initState $userInformationModel");
+  }
+
+   late UserInformationModel _userInformationModel;
+   late UserCredential userCredential;
+ UserInformationModel get userInformationModel => _userInformationModel;
+
+  set userInformationModel(UserInformationModel value) {
+    _userInformationModel = value;
+  }
+  Future<void> pageViewController(int page ,{int speed = 500})async{
+    await pageController.animateToPage(page, duration: Duration(milliseconds: speed), curve: Curves.bounceInOut);
+  }
+
  // final ReceivePort _port = ReceivePort();
 
   // Future<void>downloadImage()async{

@@ -17,7 +17,7 @@ class CustomFormField extends StatelessWidget {
   final int maxLines;
   final int minLines;
   final String? initialValue;
-  final FunctionValidate? functionOcChanged;
+  final FunctionValidate? functionOnChanged;
   final TextInputAction? textInputAction;
   const CustomFormField(
       {super.key,
@@ -32,59 +32,56 @@ class CustomFormField extends StatelessWidget {
         this.onPressedSuffixIcon,
         this.maxLines = 1,
         this.minLines = 1,
-        this.functionOcChanged,
+        this.functionOnChanged,
         this.initialValue,
         this.textInputAction, this.hintText,this.enabled = true
       });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(textLabel,style: Theme.of(context).textTheme.displaySmall?.copyWith(letterSpacing: 1.5,decorationThickness: 0),),
-           const SizedBox(height: 13),
-          TextFormField(
-            keyboardType: textInputType,
-            textInputAction: textInputAction,
-            obscureText: obscureText,
-            controller: inputField,
-            validator: functionValidate,
-            maxLines: maxLines,
-            onChanged: functionOcChanged,
-            initialValue: initialValue,
-            minLines: minLines,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(decorationThickness: 0),
-            decoration: InputDecoration(
-              errorStyle: const TextStyle(
-                color: Colors.red,
-                fontSize: 13
-              ),
-              hintText: hintText,
-              filled: true,
-              enabled: enabled,
-              fillColor: enabled? const Color(0xffffffff):const Color(0x7C919191),
-              hintStyle: Theme.of(context).textTheme.displaySmall?.copyWith(color: const Color(0xff888888),fontSize: 15),
-              enabledBorder:fieldBorderDefault(color: Color(0x679b9b9b)),
-                border: fieldBorderDefault(color: Colors.white),
-                focusedBorder:fieldBorderDefault(color: Theme.of(context).primaryColor),
-                errorBorder:fieldBorderDefault(color: Colors.red),
-              focusedErrorBorder:fieldBorderDefault(color: Colors.red),
-              suffixIcon:suffixIcon !=null?IconButton(
-                onPressed: (){
-                  onPressedSuffixIcon!();
-                },
-                icon: Icon(
-                  suffixIcon,
-                  color: Colors.grey,
-                )
-              ):null,
-            )
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(textLabel,style: Theme.of(context).textTheme.displaySmall?.copyWith(letterSpacing: 1.5,decorationThickness: 0),),
+         const SizedBox(height: 13),
+        TextFormField(
+          keyboardType: textInputType,
+          textInputAction: textInputAction,
+          obscureText: obscureText,
+          controller: inputField,
+          validator: functionValidate,
+          maxLines: maxLines,
+          onChanged: functionOnChanged,
+          initialValue: initialValue,
+          minLines: minLines,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(decorationThickness: 0),
+          decoration: InputDecoration(
+            errorStyle: const TextStyle(
+              color: Colors.red,
+              fontSize: 13
+            ),
+            hintText: hintText,
+            filled: true,
+            enabled: enabled,
+            fillColor: enabled? const Color(0xffffffff):const Color(0x7C919191),
+            hintStyle: Theme.of(context).textTheme.displaySmall?.copyWith(color: const Color(0xff888888),fontSize: 15),
+            enabledBorder:fieldBorderDefault(color: Color(0x679b9b9b)),
+              border: fieldBorderDefault(color: Colors.white),
+              focusedBorder:fieldBorderDefault(color: Theme.of(context).primaryColor),
+              errorBorder:fieldBorderDefault(color: Colors.red),
+            focusedErrorBorder:fieldBorderDefault(color: Colors.red),
+            suffixIcon:suffixIcon !=null?IconButton(
+              onPressed: (){
+                onPressedSuffixIcon!();
+              },
+              icon: Icon(
+                suffixIcon,
+                color: Colors.grey,
+              )
+            ):null,
+          )
+        ),
+      ],
     );
   }
 }

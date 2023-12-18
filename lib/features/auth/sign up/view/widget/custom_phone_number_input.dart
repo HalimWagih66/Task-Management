@@ -31,6 +31,7 @@ class CustomPhoneNumberInput extends StatelessWidget {
           validator: (value) {
            return validator(value);
           },
+
           keyboardType:
           const TextInputType.numberWithOptions(signed: true, decimal: true),
           controller: phoneController,

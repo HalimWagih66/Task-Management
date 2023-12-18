@@ -68,7 +68,7 @@ class SignUpViewModel extends BaseViewModel<SignUpNavigator> {
   }
 
   void initializeUserInformationModel(BuildContext context) {
-    Provider.of<UserInformationProvider>(context, listen: false).informationUserModel =
+    Provider.of<UserInformationProvider>(context, listen: false).userInformationModel =
         UserInformationModel(
           id: userCredential?.user?.uid,
             fullName: fullName,
@@ -78,7 +78,7 @@ class SignUpViewModel extends BaseViewModel<SignUpNavigator> {
             pathImage: urlDownloader
         );
 
-    print(Provider.of<UserInformationProvider>(context, listen: false).informationUserModel.id);
+    print(Provider.of<UserInformationProvider>(context, listen: false).userInformationModel.id);
   }
 
   Future<void> insertUserInFireStore() async {

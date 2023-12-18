@@ -1,11 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/style/colors/application_color.dart';
-import '../../../../core/widget/custom_leading_item.dart';
+import '../../../../core/widget/app_bar/custom_leading_item.dart';
 import '../../continue_account/view/continue_account_view.dart';
 import '../../login/view/login_view.dart';
 import '../../sign up/view/sign_up_view.dart';
-
 class ContinueAccountWithEmailView extends StatelessWidget {
   const ContinueAccountWithEmailView({super.key});
   static String routeName = "ContinueAccountWithEmailView";

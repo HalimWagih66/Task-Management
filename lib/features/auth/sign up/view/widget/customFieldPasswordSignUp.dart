@@ -17,7 +17,7 @@ class CustomFieldPasswordSignUp extends StatelessWidget {
       textLabel: textLabel,
       inputField: controller,
       functionValidate: (text) {
-        functionValidate(text);
+        return functionValidate(text);
       },
       borderField: const UnderlineInputBorder(
           borderSide: BorderSide(
