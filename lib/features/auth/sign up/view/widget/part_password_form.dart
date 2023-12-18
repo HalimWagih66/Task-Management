@@ -14,51 +14,56 @@ class PartPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 40),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 28.0,horizontal: 7),
-            child: Text(AppLocalizations.of(context)!.create_a_password,style: Theme.of(context).textTheme.titleLarge,),
-          ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 40),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 18.0),
+              child: Text(AppLocalizations.of(context)!.create_a_password,style: Theme.of(context).textTheme.titleLarge,),
+            ),
 
-          CustomFieldPasswordSignUp(
-            textLabel: AppLocalizations.of(context)!.password,
-              controller: passwordController,
-            functionValidate: (String text){
-            if (text == null || text.isEmpty == true || text.trim().isEmpty == true) {
-              return AppLocalizations.of(context)!.please_enter_password;
-            }
-            if (text!.length < 6) {
-              return AppLocalizations.of(context)!.please_enter_a_password_that_is_more_than_6_digits;
-            }
-          },
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          CustomFieldPasswordSignUp(
-            textLabel:AppLocalizations.of(context)!.confirm_password ,
-              controller: passwordConfirmationController,
-            functionValidate: (String text){
-                if (text != passwordConfirmationController.text) {
-                  print("text = $text firstPassword $passwordConfirmationController.text");
-                  return AppLocalizations.of(context)!
-                      .this_password_does_not_match_the_main_password;
-                }
+            CustomFieldPasswordSignUp(
+              textLabel: AppLocalizations.of(context)!.password,
+                controller: passwordController,
+              functionValidate: (String text){
+              if (text == null || text.isEmpty == true || text.trim().isEmpty == true) {
+                return AppLocalizations.of(context)!.please_enter_password;
+              }
+              if (text!.length < 6) {
+                return AppLocalizations.of(context)!.please_enter_a_password_that_is_more_than_6_digits;
+              }
+              return null;
             },
-          ),
-          CustomIconNavigateBetweenPages(onPressed:() {
-            onPressedCustomIconNext(context);
-          }, iconData: Icons.navigate_next_outlined,
-          )
-        ],
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            CustomFieldPasswordSignUp(
+              textLabel:AppLocalizations.of(context)!.confirm_password,
+                controller: passwordConfirmationController,
+              functionValidate: (String? text){
+                  if (text != passwordConfirmationController.text) {
+                    print("text = $text firstPassword $passwordConfirmationController.text");
+                    return AppLocalizations.of(context)!
+                        .this_password_does_not_match_the_main_password;
+                  }
+                  return null;
+              },
+            ),
+            CustomIconNavigateBetweenPages(onPressed:() {
+               onPressedCustomIconNext(context);
+            }, iconData: Icons.navigate_next_outlined,
+            )
+          ],
+        ),
       ),
     );
   }
-  void onPressedCustomIconNext(BuildContext context)async{
+  void onPressedCustomIconNext(BuildContext context){
      var signUpViewModel = Provider.of<SignUpViewModel>(context, listen: false);
      if (formKey.currentState?.validate() != true) return;
      signUpViewModel.navigator.controlPageViewBuilder(2);

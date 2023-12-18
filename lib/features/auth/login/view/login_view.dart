@@ -8,7 +8,7 @@ import 'package:task_management/features/auth/login/view/widget/customFieldPassw
 import '../../../../core/base/base_state.dart';
 import '../../../../core/functions/validate/validation Email.dart';
 import '../../../../core/widget/TextFormField/custom_form_field.dart';
-import '../../../../core/widget/custom_leading_item.dart';
+import '../../../../core/widget/app_bar/custom_leading_item.dart';
 import '../../continue_account_with_email_view/view/continue_with_email_view.dart';
 import '../navigator/login_navigator.dart';
 import '../view_model/login_view_model.dart';
@@ -27,7 +27,7 @@ class _LoginViewState extends BaseState<LoginView,LoginViewModel>implements Logi
 
   TextEditingController emailController = TextEditingController(text: 'halemwagih6@gmail.com');
 
-  TextEditingController passwordController = TextEditingController(text: "112233qq");
+  TextEditingController passwordController = TextEditingController(text: "54321ewq");
    @override
    void dispose() {
      passwordController.dispose();
@@ -125,6 +125,9 @@ class _LoginViewState extends BaseState<LoginView,LoginViewModel>implements Logi
                                 ),
                               ),
                               ElevatedButton(
+                                onLongPress: ()async{
+                                  await viewModel.logout();
+                                },
                                 onPressed: () async{
                                   if (formKey.currentState?.validate() == false) return;
                                  await viewModel.login(emailController.text, passwordController.text);

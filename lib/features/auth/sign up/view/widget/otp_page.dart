@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:task_management/features/auth/sign%20up/view/widget/pin_theme_otp.dart';
+import 'package:task_management/features/edit_profile/view%20model/replace_phone_number_provider.dart';
 
 import '../../../../../provider/user_information_provider.dart';
 import '../../view model/sign_up_view_model.dart';
@@ -104,6 +105,11 @@ class OtpPage extends StatelessWidget {
   }
 
   Future<void> onCompleted(BuildContext context, String smsCode) async {
-    await Provider.of<SignUpViewModel>(context,listen: false).verifySmsCode(smsCode);
+    var replacePhoneNumberProvider = Provider.of<ReplacePhoneNumberProvider>(context,listen: false);
+    if(replacePhoneNumberProvider.isPhoneReplace){
+      replacePhoneNumberProvider.verifySmsCode(smsCode, context);
+    }else{
+      await Provider.of<SignUpViewModel>(context,listen: false).verifySmsCode(smsCode);
+    }
   }
 }

@@ -8,7 +8,7 @@ import 'package:task_management/features/auth/sign%20up/view/widget/part_picture
 
 import '../../../../core/base/base_state.dart';
 import '../../../../core/style/colors/application_color.dart';
-import '../../../../core/widget/custom_leading_item.dart';
+import '../../../../core/widget/app_bar/custom_leading_item.dart';
 import '../../continue_account_with_email_view/view/continue_with_email_view.dart';
 import '../navigator/sign_up_navigator.dart';
 import '../view model/sign_up_view_model.dart';

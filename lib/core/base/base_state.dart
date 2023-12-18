@@ -21,6 +21,7 @@ abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
   void dispose() {
     super.dispose();
   }
+ 
   @override
   void pushScreenWithWidgetAndRemoveUntil(Widget widget,bool saveRoutes){
     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => widget,), (route) => saveRoutes);
@@ -71,5 +72,9 @@ abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
   @override
   void pushScreen({required String routeName, Object? arg}){
     Navigator.pushNamed(context, routeName,arguments: arg);
+  }
+  @override
+  void pushScreenWithWidget(Widget widget){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
   }
 }
