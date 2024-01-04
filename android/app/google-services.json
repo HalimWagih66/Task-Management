@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "200838806725",
+    "project_id": "task-management-952ef",
+    "storage_bucket": "task-management-952ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200838806725:android:fc4a9f736a9eb6d0d284ac",
+        "android_client_info": {
+          "package_name": "com.example.task_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbkypURyDF-p-Niep0diTaIJYMsmpten4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200838806725:android:e868b6d8e0363739d284ac",
+        "android_client_info": {
+          "package_name": "com.example.todo_list_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbkypURyDF-p-Niep0diTaIJYMsmpten4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

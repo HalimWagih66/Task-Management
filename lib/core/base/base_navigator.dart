@@ -9,5 +9,6 @@ abstract class BaseNavigator {
   void pushScreen({required String routeName, Object? arg});
   Future<void> showToastMessage(String message);
   void pushScreenWithWidgetAndRemoveUntil(Widget widget,bool saveRoutes);
+  void pushScreenWithWidget(Widget widget);
 }
 
